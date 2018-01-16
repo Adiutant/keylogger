@@ -1,6 +1,7 @@
 #include "keyboard.h"
 #include "keylogger.h"
 #include "constants.h"
+#include <cstdint>
 #include <stdexcept>
 
 HHOOK hook;
