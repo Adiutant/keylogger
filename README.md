@@ -12,7 +12,7 @@ You may configure the name of the logging file aswell as what should be logged f
 ```cpp
 constexpr const wchar_t* out_file = L"different_name.txt";
 
-const std::unordered_map<DWORD, std::wstring> key_codes
+const std::unordered_map<DWORD, const wchar_t*> key_codes
     {
         { VK_DOWN, L"[DOWN ARROW]" },
         { VK_RETURN, L"\n" },
