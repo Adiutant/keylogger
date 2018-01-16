@@ -1,11 +1,7 @@
 #include "keyboard.h"
 #include "keylogger.h"
 #include "configuration.h"
-#include <thread>
-#include <chrono>
 #include <stdexcept>
-
-using namespace std::chrono_literals;
 
 HHOOK hook;
 
