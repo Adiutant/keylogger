@@ -8,7 +8,7 @@ using namespace std::chrono_literals;
 
 HHOOK hook;
 
-LRESULT __stdcall hook_callback(int nCode, WPARAM wParam, LPARAM lParam) noexcept
+LRESULT WINAPI hook_callback(int nCode, WPARAM wParam, LPARAM lParam) noexcept
 {
     if (nCode >= 0 && wParam == WM_KEYDOWN)
     {
