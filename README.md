@@ -1,6 +1,4 @@
-## About
-A simple yet powerful C++ Windows keylogger.
-
+## Features
 - Stealthy process
 - Automically added to startup registry
 - Keyboard locale support
