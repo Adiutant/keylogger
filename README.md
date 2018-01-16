@@ -8,7 +8,7 @@
 ## Configuration
 You may configure the name of the logging file aswell as what should be logged for each [virtual-key code](https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731.aspx) by changing the `configuration.h` file.
 ```cpp
-constexpr const WCHAR* out_file = L"different_name.txt";
+constexpr const WCHAR* out_file{ L"different_name.txt" };
 
 const std::unordered_map<DWORD, const WCHAR*> key_codes
 {
