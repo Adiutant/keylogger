@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Windows.h>
-#include <cstdint>
 #include <unordered_map>
 
 namespace configuration
