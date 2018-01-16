@@ -1,7 +1,7 @@
 <div align="center">
-    [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7e1530b50bb24332b13af43822ef0a9c)](https://www.codacy.com/app/vim2meta/Keylogger?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vim2meta/Keylogger&amp;utm_campaign=Badge_Grade)
-    [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/vim2meta/Keylogger/master/LICENSE)
-    [![Release](https://img.shields.io/github/release/vim2meta/Keylogger.svg)](https://github.com/vim2meta/Keylogger/releases)
+    <a href="https://www.codacy.com/app/vim2meta/Keylogger?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vim2meta/Keylogger&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/7e1530b50bb24332b13af43822ef0a9c" alt="Codacy Badge" />
+    <a href="https://github.com/vim2meta/Keylogger/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" />
+    <a href="https://github.com/vim2meta/Keylogger/releases"><img src="https://img.shields.io/github/release/vim2meta/Keylogger.svg" alt="Release" />
 </div>
 
 ## Features
