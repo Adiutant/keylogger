@@ -3,6 +3,7 @@
 #include "configuration.h"
 #include <thread>
 #include <chrono>
+#include <stdexcept>
 
 using namespace std::chrono_literals;
 
@@ -22,11 +23,7 @@ void keyboard::set_hook()
 {
     hook = SetWindowsHookExW(WH_KEYBOARD_LL, hook_callback, NULL, 0);
 
-    if (!hook)
-    {
-        std::this_thread::sleep_for(5s);
-        set_hook();
-    }
+    if (!hook) throw std::runtime_error{ "The low level keyboard hook could not be set." };
 }
 
 void keyboard::get_state(BYTE* keyboard_state) noexcept
