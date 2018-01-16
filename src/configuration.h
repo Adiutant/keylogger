@@ -2,7 +2,6 @@
 
 #include <Windows.h>
 #include <cstdint>
-#include <string>
 #include <unordered_map>
 
 namespace configuration
@@ -17,7 +16,7 @@ namespace configuration
 
     constexpr uint8_t virtual_key_v = 0x56;
 
-    const std::unordered_map<DWORD, std::wstring> key_codes
+    const std::unordered_map<DWORD, const wchar_t*> key_codes
     {
         { VK_RETURN, L"\n" },
         { VK_ESCAPE, L"[ESCAPE]" },
