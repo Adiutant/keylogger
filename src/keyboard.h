@@ -8,7 +8,5 @@ namespace keyboard
 
     void get_state(BYTE* state) noexcept;
 
-    bool is_control_down() noexcept;
-
-    constexpr bool is_down(SHORT key_status) noexcept;
+    bool is_down(DWORD vk_code) noexcept;
 }

