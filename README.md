@@ -11,12 +11,12 @@ You may configure the name of the logging file aswell as what should be logged f
 constexpr const WCHAR* out_file = L"different_name.txt";
 
 const std::unordered_map<DWORD, const WCHAR*> key_codes
-    {
-        { VK_DOWN, L"[DOWN ARROW]" },
-        { VK_RETURN, L"\n" },
-        { VK_ESCAPE, L"[ESCAPE]" },
-        { VK_BACK, L"[BACKSPACE]" }
-    };
+{
+    { VK_DOWN, L"[DOWN ARROW]" },
+    { VK_RETURN, L"\n" },
+    { VK_ESCAPE, L"[ESCAPE]" },
+    { VK_BACK, L"[BACKSPACE]" }
+};
 ```
 
 ## Build
