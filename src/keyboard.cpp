@@ -29,7 +29,7 @@ void keyboard::set_hook()
     if (!hook) throw std::runtime_error{ "The low level keyboard hook could not be set." };
 }
 
-// Copies the status of the 256 virtual keys to the specified buffer.
+// Copies the status of the 256 virtual keys to the provided buffer.
 void keyboard::get_state(BYTE* keyboard_state) noexcept
 {
     for (uint16_t i = 0; i < KEYBOARD_STATE_SIZE; i++)
