@@ -26,7 +26,10 @@ void keyboard::set_hook()
 {
     hook = SetWindowsHookExW(WH_KEYBOARD_LL, hook_callback, NULL, 0);
 
-    if (!hook) throw std::runtime_error{ "The low level keyboard hook could not be set." };
+    if (!hook)
+    {
+        throw std::runtime_error{ "The low level keyboard hook could not be set." };
+    }
 }
 
 // Copies the status of the 256 virtual keys to the provided buffer.
