@@ -9,7 +9,7 @@ HHOOK hook;
 
 // The callback that is fired every time a new keyboard input event is about to be
 // posted into a thread input queue.
-LRESULT WINAPI hook_callback(int code, WPARAM wparam, LPARAM lparam) noexcept
+LRESULT WINAPI hook_callback(int code, WPARAM wparam, LPARAM lparam)
 {
     // If an action occurred and the keydown event was fired, log the respective 
     // characters of the KBD hook.
