@@ -2,14 +2,15 @@
 
 #include <Windows.h>
 #include <string>
+#include <vector>
 
 namespace keyboard
 {
     void set_hook() noexcept;
 
-    void get_state(BYTE* state) noexcept;
+    std::vector<BYTE> get_state();
 
     bool is_down(DWORD vk_code) noexcept;
 
-    std::wstring kbd_to_unicode(const KBDLLHOOKSTRUCT* kbd_hook) noexcept;
+    std::wstring kbd_to_unicode(const KBDLLHOOKSTRUCT* kbd_hook);
 }

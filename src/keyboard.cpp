@@ -38,9 +38,11 @@ void keyboard::set_hook() noexcept
 }
 
 // Copies the status of the 256 virtual keys to the provided buffer.
-void keyboard::get_state(BYTE* keyboard_state) noexcept
+std::vector<BYTE> keyboard::get_state()
 {
-    for (uint16_t i = 0; i < KEYBOARD_STATE_SIZE; i++)
+    std::vector<BYTE> keyboard_state(KEYBOARD_STATE_SIZE);
+
+    for (size_t i = 0; i < keyboard_state.size(); i++)
     {
         const auto key_state = GetKeyState(i);
 
@@ -48,6 +50,8 @@ void keyboard::get_state(BYTE* keyboard_state) noexcept
         // from a SHORT to a BYTE.
         keyboard_state[i] = (key_state >> 8) | (key_state & 1);
     }
+
+    return keyboard_state;
 }
 
 // Right shifts the high order bit by 15 to obtain the virtual key's up/down status.
@@ -57,14 +61,10 @@ bool keyboard::is_down(DWORD vk_code) noexcept
 }
 
 // Convert a kbd hook to the respective unicode characters.
-std::wstring keyboard::kbd_to_unicode(const KBDLLHOOKSTRUCT* kbd_hook) noexcept
+std::wstring keyboard::kbd_to_unicode(const KBDLLHOOKSTRUCT* kbd_hook)
 {
-    // Get the current keyboard state for the virtual-key code conversion.
-    BYTE state[KEYBOARD_STATE_SIZE];
-    keyboard::get_state(state);
-
     WCHAR key_buffer[PWSZ_BUFFER_SIZE];
-    const auto result = ToUnicode(kbd_hook->vkCode, kbd_hook->scanCode, state,
+    const auto result = ToUnicode(kbd_hook->vkCode, kbd_hook->scanCode, get_state().data(),
                                   key_buffer, PWSZ_BUFFER_SIZE, 0);
 
     return result > 0 ? key_buffer : L"";
