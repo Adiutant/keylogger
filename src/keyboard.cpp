@@ -55,3 +55,17 @@ bool keyboard::is_down(DWORD vk_code) noexcept
 {
     return GetKeyState(vk_code) >> 15;
 }
+
+// Convert a kbd hook to the respective unicode characters.
+std::wstring keyboard::kbd_to_unicode(const KBDLLHOOKSTRUCT* kbd_hook) noexcept
+{
+    // Get the current keyboard state for the virtual-key code conversion.
+    BYTE state[KEYBOARD_STATE_SIZE];
+    keyboard::get_state(state);
+
+    WCHAR key_buffer[PWSZ_BUFFER_SIZE];
+    const auto result = ToUnicode(kbd_hook->vkCode, kbd_hook->scanCode, state,
+                                  key_buffer, PWSZ_BUFFER_SIZE, 0);
+
+    return result > 0 ? key_buffer : L"";
+}
