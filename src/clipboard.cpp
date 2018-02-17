@@ -12,7 +12,7 @@ std::wstring clipboard::get_data()
         {
             if (const auto data = GlobalLock(handle))
             {
-                clipboard_data = { static_cast<WCHAR*>(data) };
+                clipboard_data = static_cast<WCHAR*>(data);
 
                 GlobalUnlock(handle);
             }
