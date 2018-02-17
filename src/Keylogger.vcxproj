@@ -17,11 +17,11 @@
     <ClCompile Include="registry.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="configuration.h" />
-    <ClInclude Include="constants.h" />
-    <ClInclude Include="keyboard.h" />
-    <ClInclude Include="keylogger.h" />
-    <ClInclude Include="registry.h" />
+    <ClInclude Include="configuration.hpp" />
+    <ClInclude Include="constants.hpp" />
+    <ClInclude Include="keyboard.hpp" />
+    <ClInclude Include="keylogger.hpp" />
+    <ClInclude Include="registry.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

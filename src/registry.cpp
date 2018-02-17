@@ -1,5 +1,5 @@
-#include "registry.h"
-#include "constants.h"
+#include "registry.hpp"
+#include "constants.hpp"
 #include <Windows.h>
 
 // Creates a registry entry and sets its value to the current payload path.
