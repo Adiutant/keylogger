@@ -84,7 +84,7 @@
       <PrecompiledHeaderFile />
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <DisableSpecificWarnings>26485;26426;26490;26429;26481;26472;</DisableSpecificWarnings>
+      <DisableSpecificWarnings>26485;26426;26490;26429;26481;26472;26440;</DisableSpecificWarnings>
       <TreatWarningAsError>true</TreatWarningAsError>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
@@ -109,7 +109,7 @@
       <PrecompiledHeaderFile />
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <DisableSpecificWarnings>26485;26426;26490;26429;26481;26472;</DisableSpecificWarnings>
+      <DisableSpecificWarnings>26485;26426;26490;26429;26481;26472;26440;</DisableSpecificWarnings>
       <TreatWarningAsError>true</TreatWarningAsError>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>

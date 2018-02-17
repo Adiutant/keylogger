@@ -65,5 +65,6 @@ std::wstring keyboard::kbd_to_unicode(const KBDLLHOOKSTRUCT* kbd_hook)
     const auto result = ToUnicode(kbd_hook->vkCode, kbd_hook->scanCode, get_state().data(),
                                   key_buffer, PWSZ_BUFFER_SIZE, 0);
 
+    // If the result was successful, return the buffer. If not, return an empty string.
     return result > 0 ? key_buffer : L"";
 }
