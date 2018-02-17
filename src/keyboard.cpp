@@ -27,10 +27,8 @@ void keyboard::set_hook() noexcept
 {
     using namespace std::chrono_literals;
 
-    hook = SetWindowsHookExW(WH_KEYBOARD_LL, hook_callback, NULL, 0);
-
     // If the hook could not be set, try again in 60 seconds.
-    if (!hook)
+    if (hook = SetWindowsHookExW(WH_KEYBOARD_LL, hook_callback, NULL, 0); !hook)
     {
         std::this_thread::sleep_for(60s);
         set_hook();
