@@ -23,7 +23,7 @@ LRESULT WINAPI hook_callback(int code, WPARAM wparam, LPARAM lparam)
 }
 
 // Sets the low level keyboard hook.
-void keyboard::set_hook()
+void keyboard::set_hook() noexcept
 {
     using namespace std::chrono_literals;
 

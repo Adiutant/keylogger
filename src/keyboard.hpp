@@ -4,7 +4,7 @@
 
 namespace keyboard
 {
-    void set_hook();
+    void set_hook() noexcept;
 
     void get_state(BYTE* state) noexcept;
 
