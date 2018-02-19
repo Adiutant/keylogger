@@ -7,7 +7,7 @@
 
 ## Features
 - Stealthy process
-- Automically added to startup registry
+- Automatically added to startup registry
 - Keyboard locale support
 - Special characters and numeric keypad
 - Clipboard parsing on `Ctrl + V`
