@@ -13,7 +13,7 @@
 - Clipboard parsing on `Ctrl + V`
 
 ## Configuration
-You may configure the name of the logging file as well as what should be logged for each [virtual-key code](https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731.aspx) by changing the `configuration.h` file.
+You may configure the name of the logging file as well as what should be logged for each [virtual-key code](https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731.aspx) by changing the `configuration.hpp` file.
 ```cpp
 constexpr const WCHAR* out_file{ L"filename.txt" };
 
