@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Keylogger", "src\Keylogger.vcxproj", "{B867232D-7594-42BF-9820-7C5A2988E5FA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Keylogger", "Keylogger\Keylogger.vcxproj", "{26B5E210-644B-466D-90CD-D4FD7042FC3F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4709E97-108F-4661-9279-E34F1BF5660F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3A52DA51-B45A-4689-BD20-9F97AD816331}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
@@ -20,15 +20,15 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B867232D-7594-42BF-9820-7C5A2988E5FA}.Debug|x86.ActiveCfg = Debug|Win32
-		{B867232D-7594-42BF-9820-7C5A2988E5FA}.Debug|x86.Build.0 = Debug|Win32
-		{B867232D-7594-42BF-9820-7C5A2988E5FA}.Release|x86.ActiveCfg = Release|Win32
-		{B867232D-7594-42BF-9820-7C5A2988E5FA}.Release|x86.Build.0 = Release|Win32
+		{26B5E210-644B-466D-90CD-D4FD7042FC3F}.Debug|x86.ActiveCfg = Debug|Win32
+		{26B5E210-644B-466D-90CD-D4FD7042FC3F}.Debug|x86.Build.0 = Debug|Win32
+		{26B5E210-644B-466D-90CD-D4FD7042FC3F}.Release|x86.ActiveCfg = Release|Win32
+		{26B5E210-644B-466D-90CD-D4FD7042FC3F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {136A5795-94FE-4324-BC42-A7F778D7418A}
+		SolutionGuid = {80CACAA7-89B5-4314-B1F1-7ACEED065460}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;hpp</Extensions>
+    </Filter>
+    <Filter Include="src\util">
+      <UniqueIdentifier>{4ff4d5dd-c52d-48af-8b65-2f3076e3b4fa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="util\clipboard.cpp">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\keyboard.cpp">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\registry.cpp">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="keylogger.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="util\clipboard.hpp">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\keyboard.hpp">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\registry.hpp">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="configuration.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="constants.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="keylogger.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

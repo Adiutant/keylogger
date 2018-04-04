@@ -17,8 +17,7 @@ You may configure the name of the logging file as well as what should be logged 
 ```cpp
 constexpr const WCHAR* out_file{ L"filename.txt" };
 
-const std::unordered_map<DWORD, const WCHAR*> key_codes
-{
+const std::map<DWORD, const WCHAR*> key_codes {
     { VK_DOWN, L"[DOWN ARROW]" },
     { VK_RETURN, L"\n" },
     { VK_ESCAPE, L"[ESCAPE]" },
