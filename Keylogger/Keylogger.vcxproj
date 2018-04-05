@@ -91,7 +91,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <EnablePREfast>true</EnablePREfast>
       <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>4455;26412;26490;26485;26472;26426;26440</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4455;26412;26490;26485;26472;26426;26440;26434</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalDependencies>User32.lib;Advapi32.lib</AdditionalDependencies>

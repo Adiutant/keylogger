@@ -15,6 +15,7 @@ std::optional<std::wstring> clipboard_util::get_data() {
 
 	const auto data = GlobalLock(handle);
 
+	// TODO: close clipboard before exiting?
 	if (!data)
 		return std::nullopt;
 

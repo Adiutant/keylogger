@@ -11,6 +11,5 @@ namespace keyboard_util {
 
 	bool is_down(DWORD vk_code) noexcept;
 
-	// TODO: const ref
-	std::wstring kbd_to_unicode(const KBDLLHOOKSTRUCT* kbd_hook);
+	std::wstring kbd_to_unicode(const KBDLLHOOKSTRUCT& kbd_hook);
 }
