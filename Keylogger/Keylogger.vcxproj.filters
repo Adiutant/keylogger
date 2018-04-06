@@ -10,39 +10,39 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="util\clipboard.cpp">
+    <ClCompile Include="util\clipboard.c">
       <Filter>src\util</Filter>
     </ClCompile>
-    <ClCompile Include="util\keyboard.cpp">
+    <ClCompile Include="util\keyboard.c">
       <Filter>src\util</Filter>
     </ClCompile>
-    <ClCompile Include="util\registry.cpp">
+    <ClCompile Include="util\registry.c">
       <Filter>src\util</Filter>
     </ClCompile>
-    <ClCompile Include="keylogger.cpp">
+    <ClCompile Include="main.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="keylogger.c">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="util\clipboard.hpp">
+    <ClInclude Include="util\clipboard.h">
       <Filter>src\util</Filter>
     </ClInclude>
-    <ClInclude Include="util\keyboard.hpp">
+    <ClInclude Include="util\keyboard.h">
       <Filter>src\util</Filter>
     </ClInclude>
-    <ClInclude Include="util\registry.hpp">
+    <ClInclude Include="util\registry.h">
       <Filter>src\util</Filter>
     </ClInclude>
-    <ClInclude Include="configuration.hpp">
+    <ClInclude Include="constants.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="constants.hpp">
+    <ClInclude Include="keylogger.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="keylogger.hpp">
+    <ClInclude Include="config.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
