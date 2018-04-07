@@ -79,7 +79,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WINDOWS;_UNICODE;UNICODE;_DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x501;WINVER=_WIN32_WINNT;WIN32_LEAN_AND_MEAN;WIN32;_WINDOWS;_UNICODE;UNICODE;_DEBUG</PreprocessorDefinitions>
       <LanguageStandard>
       </LanguageStandard>
       <PrecompiledHeaderFile />
@@ -109,7 +109,7 @@
       <SDLCheck>
       </SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WINDOWS;_UNICODE;UNICODE;NDEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x501;WINVER=_WIN32_WINNT;WIN32_LEAN_AND_MEAN;WIN32;_WINDOWS;_UNICODE;UNICODE;NDEBUG</PreprocessorDefinitions>
       <LanguageStandard>
       </LanguageStandard>
       <PrecompiledHeaderFile />

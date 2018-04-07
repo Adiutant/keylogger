@@ -11,6 +11,7 @@
 - Keyboard locale support
 - Special characters and numeric keypad
 - Clipboard parsing on `Ctrl + V`
+- Supports Windows XP, Vista, 8 and 10
 
 ## Configuration
 You may configure the name of the logging file as well as what should be logged for each [virtual-key code](https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731.aspx) by modifying the `keylogger.c` file.
