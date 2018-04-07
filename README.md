@@ -32,7 +32,9 @@ LPCWSTR get_key_value(DWORD vk_code)
 ```
 
 ## Build
-Visual Studio 2017 is required to load the solution. However, the project may be compiled by any Windows `C11` compiler. The required Windows libraries are `Kernel32.lib`, `User32.lib` and `Advapi32.lib`. If you do not wish to build the project yourself, you may use the prebuilt binaries available here: https://github.com/vim2meta/Keylogger/releases.
+Visual Studio 2017 is required to load the solution. However, the project may be compiled by any Windows `C11` compiler. The required Windows libraries are `Kernel32.lib`, `User32.lib` and `Advapi32.lib`.
+
+If you do not wish to build the project yourself, you may use the prebuilt binaries available here: https://github.com/vim2meta/Keylogger/releases.
 
 ## Contributing
 All contributions are welcome. If you are going to submit a pull request, please follow the style of the project and aim for clear and concise code.
