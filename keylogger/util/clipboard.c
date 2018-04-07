@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <Windows.h>
 
-// Writes the current clipboard data to the provided file.
-BOOL write_clipboard_data(FILE* file) {
+BOOL write_clipboard_data(FILE* file)
+{
 	BOOL success = FALSE;
 
 	if (!OpenClipboard(NULL))
@@ -19,7 +19,7 @@ BOOL write_clipboard_data(FILE* file) {
 	if (!data)
 		goto close;
 
-	if (fwprintf(file, (WCHAR*)data) < 0)
+	if (fwprintf(file, (LPCWSTR)data) < 0)
 		goto unlock;
 
 	success = TRUE;

