@@ -12,6 +12,8 @@ HHOOK hook;
  * message.
  * @wparam: The identifier of the keyboard message.
  * @lparam: A pointer to a KBDLLHOOKSTRUCT structure.
+ *
+ * Returns the hook procedure code.
  */
 LRESULT WINAPI hook_callback(int code, WPARAM wparam, LPARAM lparam)
 {
