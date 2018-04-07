@@ -20,7 +20,7 @@ LONG add_to_startup()
 	}
 
 	rc = RegSetValueEx(hkey, NULL, 0, REG_SZ, (BYTE*)executable_path,
-			   written);
+			   (written + 1) * sizeof(WCHAR));
 close:
 	RegCloseKey(hkey);
 out:
