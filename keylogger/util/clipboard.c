@@ -20,7 +20,7 @@ BOOL write_clipboard_data(FILE* file)
 
 	success = TRUE;
 
-	fwprintf(file, (LPCWSTR)data);
+	fwprintf_s(file, (LPCWSTR)data);
 	GlobalUnlock(handle);
 close:
 	CloseClipboard();
