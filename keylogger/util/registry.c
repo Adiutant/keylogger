@@ -5,8 +5,8 @@ LONG add_to_startup()
 {
 	HKEY hkey;
 	LONG rc = RegCreateKeyEx(HKEY_CURRENT_USER, LP_SUB_KEY, 0, NULL,
-			    REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, &hkey,
-			    NULL);
+				 REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL,
+				 &hkey, NULL);
 
 	if (rc)
 		goto out;
