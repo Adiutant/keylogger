@@ -28,7 +28,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{26b5e210-644b-466d-90cd-d4fd7042fc3f}</ProjectGuid>
-    <RootNamespace>Keylogger</RootNamespace>
+    <RootNamespace>keylogger</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
     <VcpkgTriplet>x86-windows-static</VcpkgTriplet>
     <VcpkgEnabled>true</VcpkgEnabled>
@@ -139,7 +139,4 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-  <PropertyGroup>
-    <CAExcludePath>$(QTDIR)\include;.\GeneratedFiles;$(CAExcludePath);$(VcpkgRoot)include</CAExcludePath>
-  </PropertyGroup>
 </Project>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Keylogger", "Keylogger\Keylogger.vcxproj", "{26B5E210-644B-466D-90CD-D4FD7042FC3F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "keylogger", "keylogger\keylogger.vcxproj", "{26B5E210-644B-466D-90CD-D4FD7042FC3F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3A52DA51-B45A-4689-BD20-9F97AD816331}"
 	ProjectSection(SolutionItems) = preProject
