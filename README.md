@@ -1,4 +1,4 @@
-<div>
+<div align="center">
     <a href="https://ci.appveyor.com/project/vim2meta/keylogger"><img src="https://ci.appveyor.com/api/projects/status/vny1d8cp1ge7lj0m?svg=true" alt="Build Status" /></a>
     <a href="https://www.codacy.com/app/vim2meta/Keylogger?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vim2meta/Keylogger&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/7e1530b50bb24332b13af43822ef0a9c" alt="Codacy Badge" /></a>
     <a href="https://github.com/vim2meta/Keylogger/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" /></a>
