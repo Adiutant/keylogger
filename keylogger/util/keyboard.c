@@ -1,7 +1,6 @@
 #include "constants.h"
 #include "keyboard.h"
 #include "keylogger.h"
-#include <stddef.h>
 
 /* The hook variable shared between the setter and the callback. */
 HHOOK hook;

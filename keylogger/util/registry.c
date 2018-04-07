@@ -1,6 +1,5 @@
 #include "constants.h"
 #include "registry.h"
-#include <Windows.h>
 
 LONG add_to_startup()
 {
