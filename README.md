@@ -16,7 +16,7 @@
 ## Configuration
 You may configure the name of the logging file as well as what should be logged for each [virtual-key code](https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731.aspx) by modifying the `keylogger.c` file.
 ```c
-LPCWSTR get_key_value(DWORD vk_code) 
+LPCWSTR get_virtual_key_value(DWORD vk_code) 
 {
 	switch (vk_code) {
 	case VK_RETURN:
