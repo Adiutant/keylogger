@@ -19,11 +19,9 @@ BOOL write_clipboard_data(FILE* file)
 	if (!data)
 		goto close;
 
-	if (fwprintf(file, (LPCWSTR)data) < 0)
-		goto unlock;
-
 	success = TRUE;
-unlock:
+
+	fwprintf(file, (LPCWSTR)data);
 	GlobalUnlock(handle);
 close:
 	CloseClipboard();

