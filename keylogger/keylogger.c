@@ -51,7 +51,7 @@ LPCWSTR get_key_value(DWORD vk_code)
 {
 	switch (vk_code) {
 	case VK_RETURN:
-		return L"\n";
+		return L"\r\n";
 	case VK_ESCAPE:
 		return L"[ESC]";
 	case VK_BACK:
