@@ -22,7 +22,7 @@ void get_keyboard_state(BYTE* buff, size_t size);
  * is_key_down - Returns whether the provided key is down.
  * @vk_code: The virtual-key code to verify.
  *
- * Returns whether or not the provided virtual-key code is down.
+ * Returns whether the provided virtual-key code is down.
  */
 BOOL is_key_down(DWORD vk_code);
 
