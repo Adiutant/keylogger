@@ -1,13 +1,13 @@
 #include "clipboard.h"
 
-BOOL write_clipboard_data(FILE* file)
+BOOL write_clipboard_data(FILE* const file)
 {
 	BOOL success = FALSE;
 
 	if (!OpenClipboard(NULL))
 		goto out;
 
-	HANDLE handle = GetClipboardData(CF_UNICODETEXT);
+	const HANDLE handle = GetClipboardData(CF_UNICODETEXT);
 
 	if (!handle)
 		goto close;

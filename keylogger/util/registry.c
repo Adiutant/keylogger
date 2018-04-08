@@ -11,15 +11,15 @@ LONG add_to_startup()
 	if (rc)
 		goto out;
 
-	WCHAR executable_path[MAX_PATH];
-	const DWORD written = GetModuleFileName(NULL, executable_path, MAX_PATH);
+	WCHAR exe_path[MAX_PATH];
+	const DWORD written = GetModuleFileName(NULL, exe_path, MAX_PATH);
 
 	if (!written) {
 		rc = GetLastError();
 		goto close;
 	}
 
-	rc = RegSetValueEx(hkey, NULL, 0, REG_SZ, (BYTE*)executable_path,
+	rc = RegSetValueEx(hkey, NULL, 0, REG_SZ, (BYTE*)exe_path,
 			   (written + 1) * sizeof(WCHAR));
 close:
 	RegCloseKey(hkey);
