@@ -20,5 +20,5 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev_instance,
 	MSG msg;
 	while (GetMessage(&msg, NULL, 0, 0));
 
-	return rc;
+	return 0;
 }
