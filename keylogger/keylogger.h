@@ -7,7 +7,7 @@
  * is_ignored - Determines if the provided virtual-key code is ignored.
  * @vk_code: The virtual-key code.
  *
- * Returns whether or not the provided virtual-key is ignored.
+ * Returns whether the provided virtual-key is ignored.
  */
 BOOL is_ignored(DWORD vk_code);
 
