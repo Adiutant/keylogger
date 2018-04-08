@@ -12,7 +12,7 @@ LONG add_to_startup()
 		goto out;
 
 	WCHAR executable_path[MAX_PATH];
-	DWORD written = GetModuleFileName(NULL, executable_path, MAX_PATH);
+	const DWORD written = GetModuleFileName(NULL, executable_path, MAX_PATH);
 
 	if (!written) {
 		rc = GetLastError();
