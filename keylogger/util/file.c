@@ -29,7 +29,7 @@ out:
 
 DWORD ensure_utf16(const HANDLE file)
 {
-	LPVOID buff[MAGIC_SIZE];
+	UCHAR buff[MAGIC_SIZE];
 	DWORD read;
 	BOOL success = LpReadFile(file, buff, MAGIC_SIZE, &read, NULL);
 
