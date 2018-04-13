@@ -2,6 +2,10 @@
 #include "util/registry.h"
 #include <Windows.h>
 
+// TODO: load library runtime
+// TODO: use windows xp runtime & proper sln
+// TODO: CreateFile once with proper share perms as static instead of reopen/close
+
 /*
  * The entry point for the application is a Windows subsystem to prevent a brief 
  * terminal flicker when running the payload.
