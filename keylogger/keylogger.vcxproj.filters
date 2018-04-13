@@ -3,29 +3,22 @@
   <ItemGroup>
     <Filter Include="src">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>c;h</Extensions>
     </Filter>
     <Filter Include="src\util">
-      <UniqueIdentifier>{4ff4d5dd-c52d-48af-8b65-2f3076e3b4fa}</UniqueIdentifier>
+      <UniqueIdentifier>{92ac2cfd-70ee-4e0a-99bb-127385739472}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="util\clipboard.c">
-      <Filter>src\util</Filter>
-    </ClCompile>
-    <ClCompile Include="util\keyboard.c">
-      <Filter>src\util</Filter>
-    </ClCompile>
-    <ClCompile Include="util\registry.c">
-      <Filter>src\util</Filter>
-    </ClCompile>
-    <ClCompile Include="main.c">
+    <ClInclude Include="config.h">
       <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="keylogger.c">
+    </ClInclude>
+    <ClInclude Include="constants.h">
       <Filter>src</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
+    </ClInclude>
+    <ClInclude Include="keylogger.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="util\clipboard.h">
       <Filter>src\util</Filter>
     </ClInclude>
@@ -35,14 +28,37 @@
     <ClInclude Include="util\registry.h">
       <Filter>src\util</Filter>
     </ClInclude>
-    <ClInclude Include="constants.h">
+    <ClInclude Include="win32.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="keylogger.h">
+    <ClInclude Include="library.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="config.h">
-      <Filter>src</Filter>
+    <ClInclude Include="util\file.h">
+      <Filter>src\util</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="keylogger.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="util\clipboard.c">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\keyboard.c">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\registry.c">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="win32.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="util\file.c">
+      <Filter>src\util</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

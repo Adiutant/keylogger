@@ -1,13 +1,12 @@
 #include "constants.h"
 #include "registry.h"
 
-LONG add_to_startup()
+DWORD add_to_startup(VOID)
 {
 	HKEY hkey;
-	LONG rc = RegCreateKeyEx(HKEY_CURRENT_USER, LP_SUB_KEY, 0, NULL,
-				 REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL,
-				 &hkey, NULL);
-
+	DWORD rc = LpRegCreateKeyEx(HKEY_CURRENT_USER, LP_SUB_KEY, 0, NULL,
+				    REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL,
+				    &hkey, NULL);
 	if (rc)
 		goto out;
 
@@ -19,10 +18,10 @@ LONG add_to_startup()
 		goto close;
 	}
 
-	rc = RegSetValueEx(hkey, NULL, 0, REG_SZ, (BYTE*)exe_path,
-			   (written + 1) * sizeof(WCHAR));
+	rc = LpRegSetValueEx(hkey, NULL, 0, REG_SZ, (BYTE*)exe_path,
+			     (written + 1) * sizeof(WCHAR));
 close:
-	RegCloseKey(hkey);
+	LpRegCloseKey(hkey);
 out:
 	return rc;
 }

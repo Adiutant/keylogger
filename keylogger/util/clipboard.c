@@ -1,28 +1,27 @@
 #include "clipboard.h"
+#include "file.h"
 
-BOOL write_clipboard_data(FILE* const file)
+DWORD write_clipboard_data(const HANDLE file)
 {
-	BOOL success = FALSE;
+	DWORD rc = 1;
 
-	if (!OpenClipboard(NULL))
+	if (!LpOpenClipboard(NULL))
 		goto out;
 
-	const HANDLE handle = GetClipboardData(CF_UNICODETEXT);
+	const HANDLE handle = LpGetClipboardData(CF_UNICODETEXT);
 
 	if (!handle)
 		goto close;
 
-	const LPVOID data = GlobalLock(handle);
+	const LPCVOID data = LpGlobalLock(handle);
 
 	if (!data)
 		goto close;
 
-	success = TRUE;
-
-	fwprintf_s(file, (LPCWSTR)data);
-	GlobalUnlock(handle);
+	rc = write_wstr(file, (LPCWSTR)data);
+	LpGlobalUnlock(handle);
 close:
-	CloseClipboard();
+	LpCloseClipboard();
 out:
-	return success;
+	return rc;
 }

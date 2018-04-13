@@ -11,39 +11,45 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="keylogger.c" />
-    <ClCompile Include="main.c" />
-    <ClCompile Include="util\clipboard.c" />
-    <ClCompile Include="util\keyboard.c" />
-    <ClCompile Include="util\registry.c" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="config.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="keylogger.h" />
+    <ClInclude Include="library.h" />
     <ClInclude Include="util\clipboard.h" />
+    <ClInclude Include="util\file.h" />
     <ClInclude Include="util\keyboard.h" />
     <ClInclude Include="util\registry.h" />
+    <ClInclude Include="win32.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="keylogger.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="util\clipboard.c" />
+    <ClCompile Include="util\file.c" />
+    <ClCompile Include="util\keyboard.c" />
+    <ClCompile Include="util\registry.c" />
+    <ClCompile Include="win32.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{26b5e210-644b-466d-90cd-d4fd7042fc3f}</ProjectGuid>
+    <ProjectGuid>{87ecb808-9353-4d27-adc6-bc3317b9a112}</ProjectGuid>
     <RootNamespace>keylogger</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
     <VcpkgTriplet>x86-windows-static</VcpkgTriplet>
     <VcpkgEnabled>true</VcpkgEnabled>
+    <ProjectName>keylogger</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -60,14 +66,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IntDir>$(SolutionDir)$(Configuration)\obj\</IntDir>
+    <IntDir>$(ProjectDir)$(Configuration)\</IntDir>
     <CodeAnalysisRuleSet>MixedRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <EnableCppCoreCheck>false</EnableCppCoreCheck>
     <EnableExperimentalCppCoreCheck>false</EnableExperimentalCppCoreCheck>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IntDir>$(SolutionDir)$(Configuration)\obj\</IntDir>
+    <IntDir>$(ProjectDir)$(Configuration)\</IntDir>
     <CodeAnalysisRuleSet>MixedRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <EnableCppCoreCheck>false</EnableCppCoreCheck>
@@ -79,7 +85,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x501;WINVER=_WIN32_WINNT;WIN32_LEAN_AND_MEAN;WIN32;_WINDOWS;_UNICODE;UNICODE;_DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x501;WINVER=_WIN32_WINNT;WIN32_LEAN_AND_MEAN;WIN32;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>
       </LanguageStandard>
       <PrecompiledHeaderFile />
@@ -91,13 +97,13 @@
       <SmallerTypeCheck>false</SmallerTypeCheck>
       <MinimalRebuild>false</MinimalRebuild>
       <EnablePREfast>false</EnablePREfast>
-      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>4100;4028</DisableSpecificWarnings>
       <ExceptionHandling>false</ExceptionHandling>
+      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>Kernel32.lib;User32.lib;Advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>Kernel32.lib</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -109,7 +115,7 @@
       <SDLCheck>
       </SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x501;WINVER=_WIN32_WINNT;WIN32_LEAN_AND_MEAN;WIN32;_WINDOWS;_UNICODE;UNICODE;NDEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x501;WINVER=_WIN32_WINNT;WIN32_LEAN_AND_MEAN;WIN32;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>
       </LanguageStandard>
       <PrecompiledHeaderFile />
@@ -123,14 +129,13 @@
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <EnablePREfast>false</EnablePREfast>
-      <DisableSpecificWarnings>4100;4028</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
+      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>Kernel32.lib;User32.lib;Advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>Kernel32.lib</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>

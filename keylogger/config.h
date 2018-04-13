@@ -1,3 +1,3 @@
 #pragma once
 
-#define OUT_FILE "logged.txt"
+#define OUT_FILE L"logged.txt"
