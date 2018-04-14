@@ -33,10 +33,7 @@ DWORD ensure_utf16(const HANDLE file)
 		LARGE_INTEGER dist = { 0 };
 		DWORD res = SetFilePointerEx(file, dist, NULL, FILE_END);
 
-		if (res == INVALID_SET_FILE_POINTER)
-			return GetLastError();
-
-		return 0;
+		return res != INVALID_SET_FILE_POINTER ? 0 : GetLastError();
 	}
 
 	DWORD count;
