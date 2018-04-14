@@ -53,12 +53,13 @@ DWORD init_win32_libraries(VOID)
 #pragma warning(pop)
 
 	for (SIZE_T i = 0; i < ARRAYSIZE(libs); i++) {
-		*libs[i].function = GetProcAddress(libs[i].module,
-						   libs[i].name);
-
-		if (!libs[i].function)
+		const FARPROC func = GetProcAddress(libs[i].module,
+					      libs[i].name);
+		if (!func)
 			return GetLastError();
-	}
 
+		*libs[i].function = func;
+	}
+	
 	return 0;
 }

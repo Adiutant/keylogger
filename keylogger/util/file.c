@@ -29,14 +29,15 @@ DWORD ensure_utf16(const HANDLE file)
 	if (!success)
 		return GetLastError();
 
-	if (!memcmp(buff, UTF16_MAGIC, 2))
+	if (!memcmp(buff, UTF16_MAGIC, 2)) {
+		LARGE_INTEGER dist = { 0 };
+		DWORD res = SetFilePointerEx(file, dist, NULL, FILE_END);
+
+		if (res == INVALID_SET_FILE_POINTER)
+			return GetLastError();
+
 		return 0;
-
-	LARGE_INTEGER dist = { 0 };
-	DWORD res = SetFilePointerEx(file, dist, NULL, FILE_BEGIN);
-
-	if (res == INVALID_SET_FILE_POINTER)
-		return GetLastError();
+	}
 
 	DWORD count;
 	success = WriteFile(file, UTF16_MAGIC, 2, &count, NULL);
