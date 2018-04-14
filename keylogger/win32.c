@@ -33,7 +33,7 @@ DWORD init_win32_libraries(VOID)
 #pragma warning(push)
 #pragma warning(disable: 4204 4047)
 
-	const LIBRARY libs[] = {
+	const struct library libs[] = {
 		{ kernel, &LpGlobalLock, "GlobalLock" },
 		{ kernel, &LpGlobalUnlock, "GlobalUnlock" },
 		{ kernel, &LpReadFile, "ReadFile" },

@@ -2,8 +2,8 @@
 
 #include "win32.h"
 
-typedef struct _LIBRARY {
+struct library {
 	const HMODULE module;
 	LPVOID *const function;
 	const LPCSTR name;
-} LIBRARY;
+};

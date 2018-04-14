@@ -1,13 +1,6 @@
 #include "file.h"
 
-// TODO: VS always little endian?
-#if REG_DWORD == REG_DWORD_LITTLE_ENDIAN
-static const BYTE UTF16_MAGIC[] = { 0xFF, 0xFE };
-#else
-static const BYTE UTF16_MAGIC[] = { 0xFE, 0xFF };
-#endif // REG_DWORD = REG_DWORD_LITTLE_ENDIAN
 
-enum { MAGIC_SIZE = ARRAYSIZE(UTF16_MAGIC) };
 
 DWORD open_utf16_file(HANDLE *const file, const LPCWSTR name)
 {
@@ -29,14 +22,16 @@ out:
 
 DWORD ensure_utf16(const HANDLE file)
 {
-	UCHAR buff[MAGIC_SIZE];
+	static const BYTE UTF16_MAGIC[] = { 0xFF, 0xFE };
+
+	UCHAR buff[2];
 	DWORD read;
-	BOOL success = LpReadFile(file, buff, MAGIC_SIZE, &read, NULL);
+	BOOL success = LpReadFile(file, buff, 2, &read, NULL);
 
 	if (!success)
 		return GetLastError();
 
-	if (!memcmp(buff, UTF16_MAGIC, MAGIC_SIZE))
+	if (!memcmp(buff, UTF16_MAGIC, 2))
 		return 0;
 
 	LARGE_INTEGER dist = { 0 };
@@ -46,11 +41,11 @@ DWORD ensure_utf16(const HANDLE file)
 		return GetLastError();
 
 	DWORD count;
-	success = WriteFile(file, UTF16_MAGIC, MAGIC_SIZE, &count, NULL);
+	success = WriteFile(file, UTF16_MAGIC, 2, &count, NULL);
 
 	if (!success)
 		return GetLastError();
-	else if (count != MAGIC_SIZE)
+	else if (count != 2)
 		return 1;
 
 	return 0;
