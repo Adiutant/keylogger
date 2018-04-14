@@ -52,4 +52,10 @@ extern REG_CREATE_KEY_EX LpRegCreateKeyEx;
 extern REG_SET_VALUE_EX LpRegSetValueEx;
 extern REG_CLOSE_KEY LpRegCloseKey;
 
+/*
+ * init_win32_libraries - Initializes all dynamically resolved Windows API
+ * methods.
+ *
+ * Returns zero if successful. On error, returns a non-zero error code.
+ */
 DWORD init_win32_libraries(VOID);

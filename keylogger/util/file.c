@@ -1,7 +1,5 @@
 #include "file.h"
 
-
-
 DWORD open_utf16_file(HANDLE *const file, const LPCWSTR name)
 {
 	DWORD rc;

@@ -7,6 +7,6 @@
  * file.
  * @file: A handle to the file in which the clipboard data will be written.
  *
- * Returns a non-zero value if the function succeeds. If not, returns zero.
+ * Returns zero if successful. On error, returns a non-zero error code.
  */
 DWORD write_clipboard_data(const HANDLE file);

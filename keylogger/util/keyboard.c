@@ -37,7 +37,7 @@ BOOL set_keyboard_hook(VOID)
 
 void get_keyboard_state(BYTE *const buff, const SIZE_T size)
 {
-	for (size_t i = 0; i < size; i++) {
+	for (SIZE_T i = 0; i < size; i++) {
 		const SHORT key_state = LpGetKeyState(i);
 
 		/*

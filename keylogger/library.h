@@ -4,6 +4,6 @@
 
 struct library {
 	const HMODULE module;
-	LPVOID *const function;
+	FARPROC *const function;
 	const LPCSTR name;
 };

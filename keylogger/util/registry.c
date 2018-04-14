@@ -1,6 +1,10 @@
 #include "constants.h"
 #include "registry.h"
 
+/*
+* All conversions from LONG to DWORD are safe as all Windows error codes are
+* unsigned. You can thank them for the inconsistency.
+*/
 DWORD add_to_startup(VOID)
 {
 	HKEY hkey;

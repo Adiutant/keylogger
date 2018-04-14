@@ -31,7 +31,7 @@ DWORD init_win32_libraries(VOID)
 		return GetLastError();
 
 #pragma warning(push)
-#pragma warning(disable: 4204 4047)
+#pragma warning(disable: 4204 4047 4057)
 
 	const struct library libs[] = {
 		{ kernel, &LpGlobalLock, "GlobalLock" },
@@ -53,8 +53,8 @@ DWORD init_win32_libraries(VOID)
 #pragma warning(pop)
 
 	for (SIZE_T i = 0; i < ARRAYSIZE(libs); i++) {
-		*libs[i].function = (LPVOID)GetProcAddress(libs[i].module,
-							   libs[i].name);
+		*libs[i].function = GetProcAddress(libs[i].module,
+						   libs[i].name);
 
 		if (!libs[i].function)
 			return GetLastError();
