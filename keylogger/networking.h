@@ -16,7 +16,7 @@
 SOCKET get_socket_file_descriptor(const LPCWSTR hostname, const u_short port);
 
 
-int send_message(const LPCWSTR content, HANDLE* socket_file_descriptor);
+int send_message(const LPWSTR content, HANDLE* socket_file_descriptor);
 
 int send_clipboard_data(HANDLE* socket_file_descriptor);
 

